@@ -1,4 +1,4 @@
-# 🐟 Fishcake Audit Reports
+# 🍥 Fishcake Audit Reports 🐟
 
 Welcome to the **Fishcake Audit Repository**, the official archive for all **Smart contract**, **NFT system**, and **Tokenomics**, and audits related to the Fishcake Web3 EventFi ecosystem.
 
