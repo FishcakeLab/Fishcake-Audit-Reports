@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fishcake Audit Access</title>
+  <script>
+    var password = prompt("Please enter the access password:");
+    var hash = btoa(password); // Encode input using Base64
+    if (hash !== "ZmlzaGNhY2VBdWRpdDIwMjUh") { // Base64 of "f*****A****2025!"
+      document.body.innerHTML = "<h2 style='text-align:center;color:red;margin-top:30vh;'>Access Denied ❌</h2>";
+      throw new Error("Access Denied");
+    }
+  </script>
+</head>
+<body>
+  <h1 style="text-align:center;margin-top:30vh;">Welcome to Fishcake Audit Reports 🐟</h1>
+  <p style="text-align:center;">Authorized users only. Confidential content.</p>
+</body>
+</html>
+Add password-protected index.html
