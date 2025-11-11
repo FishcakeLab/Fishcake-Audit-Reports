@@ -48,13 +48,13 @@
 
   <div id="link" style="display:none;">
     <p>✅ Access granted. Click below to preview:</p>
-    <a href="#" onclick="openPDF()">📄 View Audit Report (Preview Only)</a>
+    <a href="#" onclick="openPDF()">📄 View Audit Report-Secure3 (Preview Only)</a>
     <div id="pdf" style="margin-top:20px;"></div>
   </div>
 
   <script>
     const correct = "RmlzaGNha2VBdWRpdDIwMjUh"; 
-    const pdf = "https://github.com/FishcakeLab/Fishcake-Audit-Reports/blob/main/2025-09_Audit%20_Report_Secure3.pdf";
+    const pdf = "https://cdn.jsdelivr.net/gh/FishcakeLab/Fishcake-Audit-Reports@main/2025-09_Audit%20_Report_Secure3.pdf";
 
     function verify() {
       const input = document.getElementById("pwd").value.trim();
@@ -68,8 +68,8 @@
 
     function openPDF() {
       const pdfBox = document.getElementById("pdf");
-      pdfBox.innerHTML = `<iframe src="${pdf}" width="90%" height="600px" style="border:none;"></iframe>`;
-    }
+      pdfBox.innerHTML = `<iframe src="${pdf}" allow="autoplay"></iframe>`;
+
   </script>
 </body>
 </html>
