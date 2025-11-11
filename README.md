@@ -29,8 +29,8 @@ This repository maintains:
 
 | Date | Report | Auditor | Summary |
 |------|---------|----------|----------|
-| 2024-09 | `2024-09_Audit_Report_Scalebit.pdf` | Scalebit | Smart contract verified with no critical issues |
-| 2025-10 | `2025-10_Audit_Report_Secure3.pdf` | Secure3 | Token distribution logic validated |
+| 2024-09 | `2024-07_Audit_Report_Web3SecurityLabs.pdf` | The web3 security labs | Fishcake Main Event Manager Smart Contract, All identified issues fixed, No critical vulnerabilities found |
+| 2025-10 | `2025-09_Audit_Report_Secure3.pdf` | Secure3 | Fishcake Token distribution, Event Manager, NFT Pass, Mining & Staking Systems, All identified issues fixed, No critical vulnerabilities found |
 
 ---
 
