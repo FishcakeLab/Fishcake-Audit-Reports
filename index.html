@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fishcake Audit Access</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 10vh;
+      font-family: "Inter", Arial, sans-serif;
       background-color: #f8fafc;
+      color: #1d3557;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin-top: 20vh;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 250px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #457b9d;
     }
     h1 {
       color: #1d3557;
@@ -33,22 +58,35 @@
   </style>
 </head>
 <body>
+  <div class="container" id="login">
+    <h1>🔒 Fishcake Audit Access</h1>
+    <p>Please enter the access password to view the confidential audit report.</p>
+    <input type="password" id="pwd" placeholder="Enter password" />
+    <button onclick="verify()">Access</button>
+    <p id="message" style="color:red;margin-top:10px;"></p>
+  </div>
+
+  <div id="content" style="display:none;">
+    <h1>Welcome to Fishcake Audit Reports 🍥🐟</h1>
+    <p>Authorized users only. Confidential content.</p>
+    <a href="https://github.com/FishcakeLab/Fishcake-Audit-Reports/blob/main/2025-09_Audit%20_Report_Secure3.pdf" target="_blank">
+      📄 Click here to open the Audit Report (PDF)
+    </a>
+    <br><br>
+    <iframe src="https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf"></iframe>
+  </div>
+
   <script>
-    var password = prompt("Please enter the access password:");
-    var hash = btoa(password); // Base64 encode
-    if (hash === "ZmlzaGNhY2VBdWRpdDIwMjUh") { // Base64 for "f*****A****2025!"
-      document.write(`
-        <h1>Welcome to Fishcake Audit Reports 🐟</h1>
-        <p>Authorized users only. Confidential content.</p>
-        <a href="https://github.com/FishcakeLab/Fishcake-Audit-Reports/blob/main/2025-09_Audit%20_Report_Secure3.pdf" target="_blank">
-          📄 Click here to open the Audit Report (PDF)
-        </a>
-        <br><br>
-        <iframe src="https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf"></iframe>
-      `);
-    } else {
-      document.body.innerHTML = "<h2>Access Denied ❌</h2>";
-      throw new Error("Access Denied");
+    function verify() {
+      const input = document.getElementById("pwd").value;
+      const encoded = btoa(input);
+      const correct = "ZmlzaGNhY2VBdWRpdDIwMjUh"; // Base64 of "fxxxxAxxx2025!"
+      if (encoded === correct) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        document.getElementById("message").innerText = "❌ Incorrect password, please try again.";
+      }
     }
   </script>
 </body>
