@@ -1,98 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fishcake Audit Access</title>
   <style>
     body {
-      font-family: "Inter", Arial, sans-serif;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 20vh;
       background-color: #f8fafc;
       color: #1d3557;
-      text-align: center;
-      margin: 0;
-      padding: 0;
     }
-    .container {
-      margin-top: 20vh;
-    }
-    input[type="password"] {
+    input {
       padding: 10px;
-      font-size: 1em;
+      width: 220px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      width: 250px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 1em;
+      padding: 10px 15px;
+      margin-left: 5px;
       background-color: #1d3557;
-      color: white;
+      color: #fff;
       border: none;
       border-radius: 4px;
-      margin-left: 10px;
       cursor: pointer;
     }
     button:hover {
       background-color: #457b9d;
     }
-    h1 {
-      color: #1d3557;
-    }
-    h2 {
-      color: red;
-    }
-    iframe {
-      width: 90%;
-      height: 80vh;
-      border: none;
-      margin-top: 20px;
-    }
     a {
       display: inline-block;
       margin-top: 20px;
-      text-decoration: none;
       color: #0077cc;
+      text-decoration: none;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="login">
-    <h1>🔒 Fishcake Audit Access</h1>
-    <p>Please enter the access password to view the confidential audit report.</p>
-    <input type="password" id="pwd" placeholder="Enter password" />
-    <button onclick="verify()">Access</button>
-    <p id="message" style="color:red;margin-top:10px;"></p>
-  </div>
+  <h2>🔒 Fishcake Audit Report Access</h2>
+  <p>Enter password to view the report:</p>
+  <input type="password" id="pwd" placeholder="Enter password">
+  <button onclick="verify()">Access</button>
+  <p id="msg" style="color:red;"></p>
 
-  <div id="content" style="display:none;">
-    <h1>Welcome to Fishcake Audit Reports 🍥</h1>
-    <p>Authorized users only. Confidential content.</p>
-    <a id="view-link" href="#" onclick="showPDF()">📄 Click here to preview the Audit Report (PDF)</a>
-    <div id="pdf-container"></div>
+  <div id="link" style="display:none;">
+    <p>✅ Access granted. Click below to preview:</p>
+    <a href="#" onclick="openPDF()">📄 View Audit Report (Preview Only)</a>
+    <div id="pdf" style="margin-top:20px;"></div>
   </div>
 
   <script>
-    const correctHash = "ZmlzaGNhY2VBdWRpdDIwMjUh"; // Base64 for "fxxxAxxx2025!"
-    const pdfURL = "https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf";
+    const correct = "ZmlzaGNhY2VBdWRpdDIwMjUh";
+    const pdf = "https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf";
 
     function verify() {
-      const input = document.getElementById("pwd").value;
-      const encoded = btoa(input.trim());
-      if (encoded === correctHash) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("content").style.display = "block";
+      const input = document.getElementById("pwd").value.trim();
+      if (btoa(input) === correct) {
+        document.getElementById("link").style.display = "block";
+        document.getElementById("msg").textContent = "";
       } else {
-        document.getElementById("message").innerText = "❌ Incorrect password, please try again.";
+        document.getElementById("msg").textContent = "❌ Incorrect password.";
       }
     }
 
-    function showPDF() {
-      const container = document.getElementById("pdf-container");
-      container.innerHTML = `
-        <iframe src="${pdfURL}" allow="autoplay" title="Fishcake Audit PDF Preview"></iframe>
-      `;
+    function openPDF() {
+      const pdfBox = document.getElementById("pdf");
+      pdfBox.innerHTML = `<iframe src="${pdf}" width="90%" height="600px" style="border:none;"></iframe>`;
     }
   </script>
 </body>
