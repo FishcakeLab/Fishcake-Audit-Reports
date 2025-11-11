@@ -67,26 +67,32 @@
   </div>
 
   <div id="content" style="display:none;">
-    <h1>Welcome to Fishcake Audit Reports 🍥🐟</h1>
+    <h1>Welcome to Fishcake Audit Reports 🍥</h1>
     <p>Authorized users only. Confidential content.</p>
-    <a href="https://github.com/FishcakeLab/Fishcake-Audit-Reports/blob/main/2025-09_Audit%20_Report_Secure3.pdf" target="_blank">
-      📄 Click here to open the Audit Report (PDF)
-    </a>
-    <br><br>
-    <iframe src="https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf"></iframe>
+    <a id="view-link" href="#" onclick="showPDF()">📄 Click here to preview the Audit Report (PDF)</a>
+    <div id="pdf-container"></div>
   </div>
 
   <script>
+    const correctHash = "ZmlzaGNhY2VBdWRpdDIwMjUh"; // Base64 for "fxxxAxxx2025!"
+    const pdfURL = "https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf";
+
     function verify() {
       const input = document.getElementById("pwd").value;
-      const encoded = btoa(input);
-      const correct = "ZmlzaGNhY2VBdWRpdDIwMjU="; // Base64 of "fxxxxAxxx2025!"
-      if (encoded === correct) {
+      const encoded = btoa(input.trim());
+      if (encoded === correctHash) {
         document.getElementById("login").style.display = "none";
         document.getElementById("content").style.display = "block";
       } else {
         document.getElementById("message").innerText = "❌ Incorrect password, please try again.";
       }
+    }
+
+    function showPDF() {
+      const container = document.getElementById("pdf-container");
+      container.innerHTML = `
+        <iframe src="${pdfURL}" allow="autoplay" title="Fishcake Audit PDF Preview"></iframe>
+      `;
     }
   </script>
 </body>
