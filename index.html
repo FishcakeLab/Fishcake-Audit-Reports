@@ -4,18 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fishcake Audit Access</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 10vh;
+      background-color: #f8fafc;
+    }
+    h1 {
+      color: #1d3557;
+    }
+    h2 {
+      color: red;
+    }
+    iframe {
+      width: 90%;
+      height: 80vh;
+      border: none;
+      margin-top: 20px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
   <script>
     var password = prompt("Please enter the access password:");
-    var hash = btoa(password); // Encode input using Base64
-    if (hash !== "ZmlzaGNhY2VBdWRpdDIwMjUh") { // Base64 of "f*****A****2025!"
-      document.body.innerHTML = "<h2 style='text-align:center;color:red;margin-top:30vh;'>Access Denied ❌</h2>";
+    var hash = btoa(password); // Base64 encode
+    if (hash === "ZmlzaGNhY2VBdWRpdDIwMjUh") { // Base64 for "f*****A****2025!"
+      document.write(`
+        <h1>Welcome to Fishcake Audit Reports 🐟</h1>
+        <p>Authorized users only. Confidential content.</p>
+        <a href="https://github.com/FishcakeLab/Fishcake-Audit-Reports/blob/main/2025-09_Audit%20_Report_Secure3.pdf" target="_blank">
+          📄 Click here to open the Audit Report (PDF)
+        </a>
+        <br><br>
+        <iframe src="https://github.com/FishcakeLab/Fishcake-Audit-Reports/raw/main/2025-09_Audit%20_Report_Secure3.pdf"></iframe>
+      `);
+    } else {
+      document.body.innerHTML = "<h2>Access Denied ❌</h2>";
       throw new Error("Access Denied");
     }
   </script>
-</head>
-<body>
-  <h1 style="text-align:center;margin-top:30vh;">Welcome to Fishcake Audit Reports 🐟</h1>
-  <p style="text-align:center;">Authorized users only. Confidential content.</p>
 </body>
 </html>
-
